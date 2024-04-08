@@ -58,16 +58,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_095035) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "details", force: :cascade do |t|
-    t.string "movie"
-    t.date "show_time"
-    t.integer "seat_no"
-    t.bigint "show_time_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["show_time_id"], name: "index_details_on_show_time_id"
-  end
-
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.string "genre"
@@ -114,7 +104,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_095035) do
   add_foreign_key "bookings", "movies"
   add_foreign_key "bookings", "show_times"
   add_foreign_key "bookings", "users"
-  add_foreign_key "details", "show_times"
   add_foreign_key "seats", "show_times"
   add_foreign_key "show_times", "movies"
 end
