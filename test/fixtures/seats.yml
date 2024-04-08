@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seat_number: 1
+  avaibale: false
+  price: 1.5
+  show_time: one
+
+two:
+  seat_number: 1
+  avaibale: false
+  price: 1.5
+  show_time: two

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Booking</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<h1 class="mx-auto" style="width: 20rem;">Book Tickets </h1>
+	<div class="mx-auto" style="width: 40rem;">
+		<%= @show_time.movie.name %> - <%= @show_time.date %> - <%= @show_time.start_time.strftime("%I:%M %p") %>
+		<%= render 'form', booking: @booking %>
+	   </br>
+		<%= link_to "Back to Showtimes", movie_show_times_path(@show_time.movie), class: "btn btn-secondary" %>
+	</div>
+</body>

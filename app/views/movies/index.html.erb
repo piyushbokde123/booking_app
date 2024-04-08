@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movies Listing</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container movie-container">
+  <h1 class="text-center mb-4">Available Movies</h1>
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <div class="col-md-4">
+        <div class="card movie-card">
+          <% if movie&.image&.attached? %>
+            <%= image_tag movie.image, class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h2 class="card-title">Title: <%= movie.name %></h2>
+            <h3 class="card-text">Genre: <%= movie.genre %></h3>
+            <%= link_to "View Showtimes", movie_show_times_path(movie), class: "btn btn-primary btn-block" %>
+            <% if current_user.present? && current_user.role == 'admin' %>
+              <%= button_to "Delete", movie_path(movie), method: :delete, data: { confirm: "Are you sure?" }, remote: true, class: 'delete-movie btn btn-danger btn-block mt-2' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
+

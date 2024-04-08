@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Show</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container mt-5">
+    <div class="mx-auto" style="max-width: 40rem;">
+      <h1 class="text-center">Showtimes for <%= @movie.name %></h1>
+      <% if @movie.image.attached? %>
+      <div class="text-center"><%= image_tag @movie.image, class: "img-fluid rounded" %></div>
+      <%end%>
+    </div>
+    <div class="row mt-4">
+      <% @show_times.each do |showtime| %>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+               <h5 class="card-title"><strong>Show Date:</strong> <%= showtime.date.strftime("%a %d %Y") %></h5>
+              <h5 class="card-title"><strong>Show time:</strong> <%= showtime.start_time.strftime("%I:%M %p") %></h5>
+              <p class="card-text"><strong>Available Seats:</strong> <%= showtime&.available_seats %></p>
+              <% if current_user.present? %>
+                <%= link_to "Book Now", show_time_seats_path(showtime), class: "btn btn-primary btn-block" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= link_to "Back to Movies", movies_path, class: "btn btn-secondary mt-4" %>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: MyString
+  show_time: 2024-04-02
+  seat_no: 1
+  show_time: one
+
+two:
+  movie: MyString
+  show_time: 2024-04-02
+  seat_no: 1
+  show_time: two

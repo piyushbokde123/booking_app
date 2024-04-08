@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Booking</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h2 class= "text-center">Book Your Seats</h2>
+        
+<form id="seatSelectionForm" action="/show_times/<%= params[:show_time_id] %>/bookings/new" method="get">
+    <ol class="cabin fuselage">
+    	  <div class="mx-auto" style="width: 20rem; >
+          <div style="display: flex;justify-content: center;">
+              <div class="trapezoid "></div>
+          </div>
+        </div>
+        <% index = 0%>
+        <% @seat.each_slice(4) do |seats|%>
+            <li class="row row--<%= index += 1%>">
+              <ol class="seats" type="A">
+                <% seats.each do |seat|%>  
+                  <% if seat.available == true %>
+                      <li class="seat">
+                        <%= check_box_tag("selected_seats[]", seat.seat_number, false, {id: "seat_#{seat.seat_number}", onclick: "selectSeat(#{seat.seat_number})"}) %>
+                        <label for="seat_<%= seat.seat_number %>"><%= seat.seat_number %></label>
+                      </li>
+                  <% else %>
+                      <li class="seat seat-book">
+                        <%= check_box_tag("selected_seats[]", seat.seat_number, false, {id: "seat_#{seat.seat_number}", onclick: "selectSeat(#{seat.seat_number})", disabled: true}) %>
+                        <label for="seat_<%= seat.seat_number %>"><%= seat.seat_number %></label>
+                      </li>
+                  <% end %>
+                <% end %>
+              </ol>
+            </li>
+        <% end %>
+    </ol>
+    <div class="text-center">
+     <button type="submit" >Book Selected Seats</button>
+    </div>
+</form>
+</body>
+

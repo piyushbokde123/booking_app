@@ -1,0 +1,54 @@
+<div class="mx-auto" style="width: 40rem;">
+  <%= form_for [@show_time, @booking] do |f| %>
+    <% if @booking.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this @booking from being saved:</h2>
+        <ul>
+          <% @booking.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :User_details %>
+      <%= f.text_field :detail, class: "form-control" %>
+    </div>
+
+     <div class="field">
+      <%= f.label :Movie %>
+      <%= f.number_field :movie_id, value: @show_time.movie_id, class: "form-control" %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :show_timing %>
+      <%= f.time_field :show_timing, value: @show_time.start_time, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :total_seats %>
+      <%= f.number_field :total_seats, value: @selected_seats.count, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :seat_number %>
+      <%= f.text_field :seat_number, value: @selected_seats, placeholder: "Seat number" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.number_field :price, value: price_count(@selected_seats, @show_time.seats.first.price), class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :User %>
+      <%= f.number_field :user_id, value: current_user.id, class: "form-control" %>
+    </div>
+    </br>
+    <div class="actions">
+      <%= f.submit "Book Ticket", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

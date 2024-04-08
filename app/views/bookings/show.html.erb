@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Booking</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="mx-auto" style="width: 40rem;">
+    <h1>Booking Confirmation</h1><br>
+    
+    <table class="table">
+        <tr>
+            <td><strong>Movie:</strong></td>
+            <td><%= @booking.show_time.movie.name %></td>
+        </tr>
+        <tr>
+            <td><strong>Date:</strong></td>
+            <td><%= @booking.show_time.date %></td>
+        </tr>
+        <tr>
+            <td><strong>Show time:</strong></td>
+            <td><%= @booking.show_time.start_time.strftime("%I:%M %p") %></td>
+        </tr>
+        <tr>
+            <td><strong>Total Seats:</strong></td>
+            <td><%= @booking.total_seats %></td>
+        </tr>
+        <tr>
+            <td><strong>Price:</strong></td>
+            <td><%= @booking.price %></td>
+        </tr>
+        <tr>
+            <td><strong>Seat Number:</strong></td>
+            <td><%= @booking.seat_number %></td>
+        </tr>
+        <tr>
+            <td><strong>Booking By:</strong></td>
+            <td><%= @booking.user.name %></td>
+        </tr>
+        <tr>
+            <td><strong>Booking Detail:</strong></td>
+            <td><%= @booking.detail %></td>
+        </tr>
+    </table>
+
+    <%= link_to "Back to Show_times", movie_show_times_path(@booking.show_time.movie), class: "btn btn-secondary" %>
+</div>
+
