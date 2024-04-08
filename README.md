@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Usage
+This application has two types of users: admin and user.
+- Admin users can create movies and showtimes.
+- Regular users need to sign up to book a ticket.
