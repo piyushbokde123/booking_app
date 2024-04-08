@@ -2,13 +2,10 @@ function selectSeat(seatNumber) {
   var checkbox = document.getElementById("seat_" + seatNumber);
   var isChecked = checkbox.checked;
 
-  // Implement your logic here to handle seat selection
   if (isChecked) {
-      // If the seat is selected, you might want to highlight it or store it somewhere
-      console.log("Seat " + seatNumber + " selected.");
+    console.log("Seat " + seatNumber + " selected.");
   } else {
-      // If the seat is deselected, you might want to remove it from the selection
-      console.log("Seat " + seatNumber + " deselected.");
+    console.log("Seat " + seatNumber + " deselected.");
   }
 }
 
@@ -47,10 +44,5 @@ document.addEventListener('DOMContentLoaded', function() {
       div.innerHTML = template;
       showTimesFields.appendChild(div);
       addShowTimeButton.setAttribute('data-index', index + 1); // Update index
-    });
-
-    submitButton.addEventListener('click', function() {
-      // Additional validation or actions before form submission can be added here
-      // form.submit(); // Uncomment this line if you want to submit the form
     });
   });
